@@ -11,6 +11,7 @@ public:
     Predicate m_Predicate; 
 
     //func
-    Literal();
+    Literal()= default;
     Literal(bool isNot, Predicate &predicate);
+    bool fromString(std::string &s,int& index);
 };

@@ -13,10 +13,10 @@ public:
     std::vector<std::string> m_vTerms; 
 
     // func
-    Predicate();
+    Predicate()=default;
     Predicate(std::string & name, std::vector<std::string> terms);
     Predicate(Predicate &pred);
-    void fromString(std::string &s);
+    bool fromString(std::string &s,int& index);
 };
 
 using Pred = Predicate;
