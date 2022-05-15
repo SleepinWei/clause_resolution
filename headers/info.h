@@ -18,7 +18,6 @@ struct implication
     string conclusion; //consequent
 };
 
-extern implication p[50];
 extern queue<string> agenda; //unused facts
 extern string target;
 extern int KB_Num;
