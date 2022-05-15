@@ -1,3 +1,4 @@
+#pragma once
 #include"clause.h"
 #include"knowlegebase.h"
 #include<map>

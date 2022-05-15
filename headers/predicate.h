@@ -15,8 +15,12 @@ public:
     // func
     Predicate()=default;
     Predicate(std::string & name, std::vector<std::string> terms);
-    Predicate(Predicate &pred);
+    Predicate(const Predicate &pred);
     bool fromString(std::string &s,int& index);
+
+    // friend std::ostream &operator<<(std::ostream &cout, const Predicate &p);
+    void print();
 };
+std::ostream &operator<<(std::ostream &cout, Predicate const &p);
 
 using Pred = Predicate;
