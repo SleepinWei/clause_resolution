@@ -2,6 +2,15 @@
 #include"literal.h"
 #include"clause.h"
 #include<iostream>
+#include"util.h"
+
+void printMap(std::map<std::string,std::string>& map){
+    std::cout << "{\n";
+    for (auto iter = map.begin(); iter != map.end();iter++){
+        std::cout << iter->first << ':' << iter->second << '\n';
+    }
+    std::cout << "}\n";
+}
 
 std::ostream& operator<< (std::ostream& out, Predicate const& p){
     out << p.m_sName << '(';

@@ -1,13 +1,19 @@
 #pragma once
 #include<vector>
 #include<string>
-#include"clause.h"
+#include"implication.h"
 
 class KnowledgeBase{
     // KB
     //variable
-    std::vector<DNF> m_vList; 
+public:
+    std::vector<Impl> m_vList;
+    std::vector<Literal> m_Fact; 
 
     //function
+    KnowledgeBase();
+    bool ask(Literal &query);
+    bool addFromString(std::string &s);
+    void print();
 };
 using KB = KnowledgeBase;

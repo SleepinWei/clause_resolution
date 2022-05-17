@@ -93,7 +93,7 @@ bool ConjunctiveClause::fromString(std::string& s, int & index){
         newLiteral.fromString(s, pos);
         m_vList.push_back(newLiteral);
         
-        if (pos >= s.length() || s[pos] =='|'){ //note: 因为literal的fromstring让index指向literal的下一个元素
+        if (pos >= s.length() || s[pos] =='|'||s[pos] == '-'){ //note: 因为literal的fromstring让index指向literal的下一个元素
             // 如果有 或 运算 or 到结尾，则结束
             index = pos+1;
             return true; 
