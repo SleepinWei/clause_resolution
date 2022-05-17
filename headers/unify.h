@@ -2,6 +2,7 @@
 #include"clause.h"
 #include"knowlegebase.h"
 #include<map>
+
 bool fUnifyPred(Predicate &x, Predicate &y, std::map<std::string, std::string> &mapSub);
 bool fUnifyLiteral(
     Literal &x, Literal &y,

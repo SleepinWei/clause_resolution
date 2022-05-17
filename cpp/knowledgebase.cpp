@@ -8,8 +8,16 @@ KnowledgeBase::KnowledgeBase():
     m_vList(std::vector<Impl>()),m_Fact(std::vector<Literal>()){
 
 }
-bool fSatisfyPremise(std::vector<Literal>& premises,std::vector<Literal>& facts, 
-    std::map<std::string,std::string>& sub)
+/************************************
+ * fSatisfyPremise 
+ * @ param: premises, 合取范式的各个前提
+ * @ param: facts, KB中的事实，即非推断式 e.g. H(a,b,c)
+ * @ param: sub: 前提被成功推理后的置换
+ * @ param: record: 记录当前蕴涵式被哪些facts证明
+ * *********************************/
+bool fSatisfyPremise(std::vector<Literal> &premises, std::vector<Literal> &facts,
+    std::map<std::string, std::string> &sub,
+    std::vector<int>& record)
 {
     std::map<std::string, std::string> newSub;
     for (int i = 0; i < premises.size();i++){
@@ -17,6 +25,7 @@ bool fSatisfyPremise(std::vector<Literal>& premises,std::vector<Literal>& facts,
         for (int j = 0; j < facts.size();j++){
             if(fUnifyLiteral(premises[i],facts[j],newSub)){
                 // 如果两个表达式成功合一
+                record.push_back(j);
                 flag = true;
                 break; 
             }
@@ -31,6 +40,7 @@ bool fSatisfyPremise(std::vector<Literal>& premises,std::vector<Literal>& facts,
 }
 /*****************************
  * fSubst: 使用 sub 置换 fact 中的变量
+ * return: 替换后的 Literal 值
  * **************************/
 Literal fSubst(Literal& fact, std::map<std::string,std::string> sub){
     Literal result(fact);
@@ -51,6 +61,22 @@ Literal fSubst(Literal& fact, std::map<std::string,std::string> sub){
     return result;
 }
 
+/****************************************
+ * printInfo 
+ * 打印 归结 时的中间信息
+ * **************************************/ 
+void printInfo(std::ostream& cout, int implIndex, std::vector<int> record){
+    cout << "Impl" << implIndex;
+    for(auto e: record){
+        cout << "&F" << e;
+    }
+    cout << "\n";
+}
+
+/****************************
+ * ask
+ * 前向连接函数，根据 query 的值在 KB 中查询是否满足。
+ * **************************/
 bool KnowledgeBase::ask(Literal& query){
     while(true){
         std::vector<Literal> newKnowledge; 
@@ -60,12 +86,14 @@ bool KnowledgeBase::ask(Literal& query){
             Literal &conclusion = impl.m_Conclusion;
 
             std::map<std::string, std::string> sub;
-            int successful = fSatisfyPremise(premises, m_Fact, sub);
+            std::vector<int> record;
+            int successful = fSatisfyPremise(premises, m_Fact, sub,record);
             if(successful){
                 // 如果成功归约，则
                 Literal newFact = fSubst(conclusion, sub);
                 // 输出提示信息
-                std::cout << "Knowledge " << i << " is resolved." << '\n';
+                printInfo(std::cout, i, record);
+
                 if(true)//TODO: newfact does not unify with some sentence in KB or newKB
                 {
                     newKnowledge.push_back(newFact);
@@ -86,6 +114,10 @@ bool KnowledgeBase::ask(Literal& query){
     return false; 
 }
 
+/*****************************
+ * addFromString 
+ * 通过字符串添加 fact 或者 impl. 根据是否存在 "->" 判断是 fact 还是 impl
+ * **************************/
 bool KnowledgeBase::addFromString(std::string& s){
     int index = 0;
     int isImpl = false;
@@ -108,6 +140,10 @@ bool KnowledgeBase::addFromString(std::string& s){
     return true;
 }
 
+/******************************
+ * print()
+ * 打印 KB 中的所有 Fact 和 Implication
+ * ***************************/
 void KnowledgeBase::print(){
     std::cout << "Implicaton:\n";
     for (int i = 0; i < this->m_vList.size();i++){

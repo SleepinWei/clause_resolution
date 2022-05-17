@@ -3,6 +3,7 @@
 /*****************************
 * unify Predicate
 * @ param: sub: substitution
+* 对两个谓词结构判断是否能够合一
 *****************************/
 bool fUnifyPred(Predicate& x, Predicate& y,std::map<std::string,std::string>& mapSub){
     if(x.m_sName.compare(y.m_sName)!=0)
@@ -51,6 +52,9 @@ bool fUnifyPred(Predicate& x, Predicate& y,std::map<std::string,std::string>& ma
     return true;
 }
 
+/***********************
+ * 判断两个 literal 结构能够合一
+ * ********************/
 bool fUnifyLiteral(
     Literal & x, Literal& y,
     std::map<std::string,std::string> & mapSub
@@ -61,6 +65,9 @@ bool fUnifyLiteral(
     return fUnifyPred(x.m_Predicate, y.m_Predicate,mapSub);
 }
 
+/*******************************
+ * 判断两个 合取 范式能够合一
+ * ****************************/ 
 bool fUnifyCNF(
     CNF& x, CNF& y,
     std::map<std::string,std::string>& mapSub){
