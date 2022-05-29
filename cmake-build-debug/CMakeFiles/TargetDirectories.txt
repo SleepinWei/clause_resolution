@@ -1,3 +1,0 @@
-/Users/lmqsmacbook/Desktop/Clause-Resolution/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/lmqsmacbook/Desktop/Clause-Resolution/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/lmqsmacbook/Desktop/Clause-Resolution/cmake-build-debug/CMakeFiles/Clause_Resolution.dir

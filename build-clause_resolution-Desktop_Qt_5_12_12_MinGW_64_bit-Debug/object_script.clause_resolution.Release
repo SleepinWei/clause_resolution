@@ -1,0 +1,10 @@
+release/clause_transition.o
+release/clauses_impl.o
+release/implication.o
+release/knowledgebase.o
+release/main.o
+release/main_.o
+release/mainwindow.o
+release/unify.o
+release/util.o
+release/moc_mainwindow.o
