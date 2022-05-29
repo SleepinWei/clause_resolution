@@ -210,7 +210,6 @@ Makefile: ../clause_resolution/clause_resolution.pro D:/Software/Qt/Qt5.12.12/5.
 		D:/Software/Qt/Qt5.12.12/5.12.12/mingw73_64/mkspecs/features/qt_config.prf \
 		D:/Software/Qt/Qt5.12.12/5.12.12/mingw73_64/mkspecs/win32-g++/qmake.conf \
 		D:/Software/Qt/Qt5.12.12/5.12.12/mingw73_64/mkspecs/features/spec_post.prf \
-		.qmake.stash \
 		D:/Software/Qt/Qt5.12.12/5.12.12/mingw73_64/mkspecs/features/exclusive_builds.prf \
 		D:/Software/Qt/Qt5.12.12/5.12.12/mingw73_64/mkspecs/features/toolchain.prf \
 		D:/Software/Qt/Qt5.12.12/5.12.12/mingw73_64/mkspecs/features/default_pre.prf \
@@ -386,7 +385,6 @@ D:/Software/Qt/Qt5.12.12/5.12.12/mingw73_64/mkspecs/features/qt_functions.prf:
 D:/Software/Qt/Qt5.12.12/5.12.12/mingw73_64/mkspecs/features/qt_config.prf:
 D:/Software/Qt/Qt5.12.12/5.12.12/mingw73_64/mkspecs/win32-g++/qmake.conf:
 D:/Software/Qt/Qt5.12.12/5.12.12/mingw73_64/mkspecs/features/spec_post.prf:
-.qmake.stash:
 D:/Software/Qt/Qt5.12.12/5.12.12/mingw73_64/mkspecs/features/exclusive_builds.prf:
 D:/Software/Qt/Qt5.12.12/5.12.12/mingw73_64/mkspecs/features/toolchain.prf:
 D:/Software/Qt/Qt5.12.12/5.12.12/mingw73_64/mkspecs/features/default_pre.prf:
