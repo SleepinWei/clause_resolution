@@ -15,6 +15,7 @@ public:
     Literal(bool isNot, Predicate &predicate);
     Literal(const Literal &l); 
     bool fromString(std::string &s,int& index);
+    bool operator==(const Literal &l);
 
     void print();
 };

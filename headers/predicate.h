@@ -17,6 +17,7 @@ public:
     Predicate(std::string & name, std::vector<std::string> terms);
     Predicate(const Predicate &pred);
     bool fromString(std::string &s,int& index);
+    bool operator==(const Predicate &p); 
 
     // friend std::ostream &operator<<(std::ostream &cout, const Predicate &p);
     void print();

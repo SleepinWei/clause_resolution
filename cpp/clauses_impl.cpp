@@ -47,6 +47,17 @@ bool Predicate:: fromString(std::string & s,int& index){
     }
     return true;
 }
+bool Predicate::operator==(const Predicate& p){
+    if(m_sName.compare(p.m_sName) != 0){
+        return false; 
+    }
+    for (int i = 0; i < m_vTerms.size();i++){
+        if(m_vTerms[i].compare(p.m_vTerms[i])!=0){
+            return false;
+        }
+    }
+    return true;
+}
 
 void Predicate::print(){
     std::cout << this->m_sName << '(';
@@ -83,6 +94,9 @@ void Literal::print(){
         std::cout<<"~";
     }
     this->m_Predicate.print();
+}
+bool Literal:: operator==(const Literal& l){
+    return bNot == l.bNot && m_Predicate == l.m_Predicate;
 }
 
 /*Clause*/ 

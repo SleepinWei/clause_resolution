@@ -28,6 +28,7 @@ int main() {
     cin >> query;
     int index = 0;
     l.fromString(query, index);
-    base.ask(l);
+    // base.ask(l);
+    cout<<base.entails(l)<<'\n';
     return 0;
 }

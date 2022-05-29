@@ -2,6 +2,8 @@
 #include"unify.h"
 #include<vector> 
 #include<map>
+#include<unordered_map>
+#include<queue>
 #include<iostream>
 
 KnowledgeBase::KnowledgeBase():
@@ -157,4 +159,68 @@ void KnowledgeBase::print(){
         this->m_Fact[i].print();
         std::cout << '\n';
     }
+}
+
+/*******************************
+ * resize count vector
+ * ****************************/
+// void KnowledgeBase:: updateCount(){
+//     int size = this->m_vList.size();
+//     count.resize(size);
+//     for (int i = 0; i < size;i++){
+//         count[i] = m_vList[i].m_Condition.m_vList.size();
+//     }
+// }
+/********************************
+ * entails
+ * 命题逻辑的前向连接算法
+ * ******************************/
+bool KnowledgeBase::entails(Literal& query){
+    int size = this->m_vList.size();
+    std::vector<int> count(size);
+    for (int i = 0; i < size;i++){
+        count[i] = m_vList[i].m_Condition.m_vList.size();
+    }
+    std::queue<int> agenda;
+    for (int i = 0; i < m_Fact.size();i++){
+        agenda.push(i);
+    }
+    std::vector<int> inferred(m_Fact.size(),false);
+
+    while(agenda.size()){
+        int index = agenda.front();
+        agenda.pop(); 
+        if(m_Fact[index] == query){
+            return true;
+        }
+        if(inferred[index] == false){
+            inferred[index] = true;
+            for (int i = 0; i < m_vList.size();i++){
+                Impl &impl = m_vList[i];
+                int flag = false; 
+                for (int j = 0; j < impl.m_Condition.m_vList.size();j++){
+                    if(impl.m_Condition.m_vList[j] == m_Fact[index]){
+                        --count[i];
+                        if(count[i] == 0){
+                            m_Fact.push_back(impl.m_Conclusion);
+                            inferred.push_back(false);
+                            agenda.push(m_Fact.size() - 1);
+
+                            /******print******/
+                            std::cout << "Fact" << index << " + Impl" << i << " =>";
+                            impl.m_Conclusion.print();
+                            std::cout << '\n';
+                        }
+                        else {
+                            /******print******/
+                            std::cout << "Fact" << index << " + Impl" << i << '\n';
+                        }
+                        flag = true;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    return false;
 }
