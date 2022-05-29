@@ -21,6 +21,7 @@ void MainWindow::on_actionClear_triggered() { on_pushButtonClear_clicked(); }
 
 void MainWindow::on_pushButtonRun_clicked() {
   ui->lineEdit->clear();
+  ui->lineEdit->setReadOnly(true);
   for (const auto m : models) {
     m->clear();
   }
