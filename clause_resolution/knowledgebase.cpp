@@ -1,5 +1,6 @@
 #include "knowledgebase.h"
 #include "unify.h"
+#include <QDebug>
 #include <iostream>
 #include <map>
 #include <queue>
@@ -188,9 +189,11 @@ bool KnowledgeBase::entails(Literal &query) {
   while (agenda.size()) {
     int index = agenda.front();
     agenda.pop();
+
     if (m_Fact[index] == query) {
       return true;
     }
+
     if (inferred[index] == false) {
       inferred[index] = true;
       for (int i = 0; i < m_vList.size(); i++) {

@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow) {
@@ -19,6 +20,12 @@ void MainWindow::on_actionRun_triggered() { on_pushButtonRun_clicked(); }
 void MainWindow::on_actionClear_triggered() { on_pushButtonClear_clicked(); }
 
 void MainWindow::on_pushButtonRun_clicked() {
+  ui->lineEdit->clear();
+  for (const auto m : models) {
+    m->clear();
+  }
+  std::vector<QStandardItemModel *>().swap(models); // clear the vector
+
   KB base;
 
   std::string str;
@@ -32,7 +39,7 @@ void MainWindow::on_pushButtonRun_clicked() {
     base.addFromString(s);
   }
 
-  QString2stdString(ui->lineEdit_2->inputMask(), str);
+  QString2stdString(ui->lineEdit_2->text(), str);
   Literal l;
   int index(0);
   l.fromString(str, index);
@@ -103,6 +110,7 @@ void MainWindow::on_pushButtonRun_clicked() {
   }
 
   ui->lineEdit->setReadOnly(true);
+  ui->lineEdit->clear();
   ui->lineEdit->insert(r ? "True" : "False");
 }
 
