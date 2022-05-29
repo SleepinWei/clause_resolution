@@ -1,6 +1,6 @@
 #pragma once
 #include "clause.h"
-#include "knowlegebase.h"
+#include "knowledgebase.h"
 #include <map>
 
 bool fUnifyPred(Predicate &x, Predicate &y,

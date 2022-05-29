@@ -1,14 +1,3 @@
-//#include "mainwindow.h"
-
-//#include <QApplication>
-
-// int main(int argc, char *argv[]) {
-//   QApplication a(argc, argv);
-//   MainWindow w;
-//   w.show();
-//   return a.exec();
-// }
-
 #include <QApplication>
 #include <QStyleFactory>
 #include <QTextCodec>
@@ -23,6 +12,7 @@ int main(int argc, char *argv[]) {
   a.setFont(QFont("Arial, Microsoft YaHei", 10));
   a.setStyle(QStyleFactory::create("Fusion"));
   MainWindow w;
+  w.setWindowTitle("Clause Resolution");
   w.show();
   return a.exec();
 }

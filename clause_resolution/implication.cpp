@@ -12,6 +12,7 @@ void Implication::fromString(std::string &s, int &index) {
 }
 
 #include <iostream>
+
 void Implication::print() {
   this->m_Condition.print();
   std::cout << "->";

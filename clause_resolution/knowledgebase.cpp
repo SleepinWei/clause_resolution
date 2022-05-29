@@ -1,4 +1,4 @@
-#include "knowlegebase.h"
+#include "knowledgebase.h"
 #include "unify.h"
 #include <iostream>
 #include <map>
@@ -199,6 +199,7 @@ bool KnowledgeBase::entails(Literal &query) {
         for (int j = 0; j < impl.m_Condition.m_vList.size(); j++) {
           if (impl.m_Condition.m_vList[j] == m_Fact[index]) {
             --count[i];
+            std::ostringstream oss;
             if (count[i] == 0) {
               m_Fact.push_back(impl.m_Conclusion);
               inferred.push_back(false);
@@ -208,10 +209,16 @@ bool KnowledgeBase::entails(Literal &query) {
               std::cout << "Fact" << index << " + Impl" << i << " =>";
               impl.m_Conclusion.print();
               std::cout << '\n';
+
+              oss << "Fact" << index << " + Impl" << i << " => "
+                  << impl.m_Conclusion;
             } else {
               /******print******/
               std::cout << "Fact" << index << " + Impl" << i << '\n';
+
+              oss << "Fact" << index << " + Impl" << i;
             }
+            process.push_back(oss.str());
             flag = true;
             break;
           }
@@ -221,3 +228,25 @@ bool KnowledgeBase::entails(Literal &query) {
   }
   return false;
 }
+
+std::vector<std::string> KnowledgeBase::getImplications() const {
+  std::vector<std::string> implVec;
+  for (const auto &l : m_vList) {
+    std::ostringstream ss;
+    ss << l;
+    implVec.push_back(ss.str());
+  }
+  return implVec;
+}
+
+std::vector<std::string> KnowledgeBase::getFacts() const {
+  std::vector<std::string> factVec;
+  for (const auto &l : m_Fact) {
+    std::ostringstream ss;
+    ss << l;
+    factVec.push_back(ss.str());
+  }
+  return factVec;
+}
+
+std::vector<std::string> KnowledgeBase::getProcess() const { return process; }

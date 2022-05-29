@@ -1,5 +1,5 @@
 #include "clause.h"
-#include "knowlegebase.h"
+#include "knowledgebase.h"
 #include "literal.h"
 #include "predicate.h"
 #include <iostream>
@@ -79,14 +79,17 @@ bool Literal::fromString(std::string &s, int &index) {
   }
   return true;
 }
+
 Literal ::Literal(const Literal &l)
     : bNot(l.bNot), m_Predicate(l.m_Predicate) {}
+
 void Literal::print() {
   if (this->bNot) {
     std::cout << "~";
   }
   this->m_Predicate.print();
 }
+
 bool Literal::operator==(const Literal &l) {
   return bNot == l.bNot && m_Predicate == l.m_Predicate;
 }
@@ -116,6 +119,7 @@ bool ConjunctiveClause::fromString(std::string &s, int &index) {
 
 ConjunctiveClause::ConjunctiveClause(const ConjunctiveClause &c)
     : m_vList(c.m_vList) {}
+
 void ConjunctiveClause::print() {
   // std::cout << m_vList.size();
   for (int i = 0; i < m_vList.size(); i++) {

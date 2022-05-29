@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>905</width>
-    <height>626</height>
+    <width>1571</width>
+    <height>1018</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,22 +16,70 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_3">
     <item row="0" column="0">
-     <layout class="QVBoxLayout" name="verticalLayout_8" stretch="8,1">
+     <layout class="QVBoxLayout" name="verticalLayout_8" stretch="0,0">
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_14" stretch="0,0">
+       <layout class="QHBoxLayout" name="horizontalLayout_14" stretch="0,0,0">
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_9" stretch="7,2">
+         <layout class="QVBoxLayout" name="verticalLayout_9" stretch="0,0">
           <item>
            <layout class="QVBoxLayout" name="verticalLayout_11">
             <item>
              <widget class="QLabel" name="label_2">
               <property name="text">
-               <string>TextLabel</string>
+               <string>Knowledge Base (Input)</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QPlainTextEdit" name="plainTextEdit"/>
+             <widget class="QPlainTextEdit" name="plainTextEdit">
+              <property name="font">
+               <font>
+                <family>Consolas</family>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="plainText">
+               <string>L(A)
+L(B)
+L(C)
+H(A,A)
+H(A,C)
+
+~L(A)-&gt;~K(A,A)
+~L(B)-&gt;~K(B,A)
+~L(C)-&gt;~K(C,A)
+~H(A,A)-&gt;~K(A,A)
+~H(B,A)-&gt;~K(B,A)
+~H(C,A)-&gt;~K(C,A)
+H(A,A)-&gt;~H(C,A)
+H(A,B)-&gt;~H(C,B)
+H(A,C)-&gt;~H(C,C)
+H(B,A)-&gt;~R(A,A)
+H(B,B)-&gt;~R(B,A)
+H(B,C)-&gt;~R(C,A)
+~H(B,A)-&gt;R(A,A)
+~H(B,B)-&gt;R(B,A)
+~H(B,C)-&gt;R(C,A)
+H(A,A)-&gt;H(B,A)
+H(A,B)-&gt;H(B,B)
+H(A,C)-&gt;H(B,C)
+H(A,A)&amp;H(A,B)-&gt;~H(A,C)
+H(A,A)&amp;H(A,C)-&gt;~H(A,B)
+H(A,B)&amp;H(A,C)-&gt;~H(A,A)
+H(B,A)&amp;H(B,B)-&gt;~H(B,C)
+H(B,A)&amp;H(B,C)-&gt;~H(B,B)
+H(B,B)&amp;H(B,C)-&gt;~H(B,A)
+H(C,A)&amp;H(C,B)-&gt;~H(C,C)
+H(C,A)&amp;H(C,C)-&gt;~H(C,B)
+H(C,B)&amp;H(C,C)-&gt;~H(C,A)
+R(A,A)-&gt;~K(A,A)
+R(B,A)-&gt;~K(B,A)
+R(C,A)-&gt;~K(C,A)
+L(A)&amp;H(A,A)&amp;~R(A,A)&amp;~K(B,A)&amp;~K(C,A)-&gt;K(A,A)
+L(B)&amp;H(B,A)&amp;~R(B,A)&amp;~K(A,A)&amp;~K(C,A)-&gt;K(B,A)
+L(C)&amp;H(C,A)&amp;~R(C,A)&amp;~K(A,A)&amp;~K(B,A)-&gt;K(C,A)</string>
+              </property>
+             </widget>
             </item>
            </layout>
           </item>
@@ -40,12 +88,22 @@
             <item>
              <widget class="QLabel" name="label_3">
               <property name="text">
-               <string>TextLabel</string>
+               <string>Query (Input)</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QPlainTextEdit" name="plainTextEdit_2"/>
+             <widget class="QLineEdit" name="lineEdit_2">
+              <property name="font">
+               <font>
+                <family>Consolas</family>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>K(A,A)</string>
+              </property>
+             </widget>
             </item>
            </layout>
           </item>
@@ -56,12 +114,74 @@
           <item>
            <widget class="QLabel" name="label">
             <property name="text">
-             <string>TextLabel</string>
+             <string>Implications</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QTableView" name="tableView"/>
+           <widget class="QTableView" name="tableView">
+            <property name="font">
+             <font>
+              <family>Consolas</family>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_4">
+            <property name="text">
+             <string>Facts</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QTableView" name="tableView_2">
+            <property name="font">
+             <font>
+              <family>Consolas</family>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <widget class="QLabel" name="label_6">
+            <property name="text">
+             <string>Result</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="lineEdit">
+            <property name="font">
+             <font>
+              <family>Consolas</family>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_5">
+            <property name="text">
+             <string>Resolving Process</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QTableView" name="tableView_3">
+            <property name="font">
+             <font>
+              <family>Consolas</family>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+           </widget>
           </item>
          </layout>
         </item>
@@ -83,9 +203,9 @@
          </spacer>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QPushButton" name="pushButtonRun">
           <property name="text">
-           <string>PushButton</string>
+           <string>Run</string>
           </property>
          </widget>
         </item>
@@ -95,20 +215,20 @@
            <enum>Qt::Horizontal</enum>
           </property>
           <property name="sizeType">
-           <enum>QSizePolicy::Minimum</enum>
+           <enum>QSizePolicy::MinimumExpanding</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
-            <width>40</width>
-            <height>20</height>
+            <width>60</width>
+            <height>0</height>
            </size>
           </property>
          </spacer>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_2">
+         <widget class="QPushButton" name="pushButtonClear">
           <property name="text">
-           <string>PushButton</string>
+           <string>Clear</string>
           </property>
          </widget>
         </item>
@@ -136,12 +256,48 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>905</width>
-     <height>26</height>
+     <width>1571</width>
+     <height>31</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuAbout">
+    <property name="title">
+     <string>About</string>
+    </property>
+    <addaction name="actionAbout_the_Program"/>
+    <addaction name="actionAbout_Qt"/>
+   </widget>
+   <widget class="QMenu" name="menuAction">
+    <property name="title">
+     <string>Action</string>
+    </property>
+    <addaction name="actionRun"/>
+    <addaction name="actionClear"/>
+   </widget>
+   <addaction name="menuAction"/>
+   <addaction name="menuAbout"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionAbout_the_Program">
+   <property name="text">
+    <string>About the Program</string>
+   </property>
+  </action>
+  <action name="actionAbout_Qt">
+   <property name="text">
+    <string>About Qt</string>
+   </property>
+  </action>
+  <action name="actionRun">
+   <property name="text">
+    <string>Run</string>
+   </property>
+  </action>
+  <action name="actionClear">
+   <property name="text">
+    <string>Clear</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

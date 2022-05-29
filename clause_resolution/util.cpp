@@ -22,6 +22,7 @@ std::ostream &operator<<(std::ostream &out, Predicate const &p) {
   out << ")";
   return out;
 }
+
 std::ostream &operator<<(std::ostream &out, const Literal &l) {
   if (l.bNot) {
     out << "~";
@@ -29,6 +30,7 @@ std::ostream &operator<<(std::ostream &out, const Literal &l) {
   out << l.m_Predicate;
   return out;
 }
+
 std::ostream &operator<<(std::ostream &out, const CNF &c) {
   for (int i = 0; i < c.m_vList.size(); i++) {
     if (i != 0) {
@@ -38,6 +40,7 @@ std::ostream &operator<<(std::ostream &out, const CNF &c) {
   }
   return out;
 }
+
 std::ostream &operator<<(std::ostream &out, const DNF &d) {
   for (int i = 0; i < d.m_vList.size(); i++) {
     if (i != 0) {
@@ -46,4 +49,8 @@ std::ostream &operator<<(std::ostream &out, const DNF &d) {
     out << d.m_vList[i];
   }
   return out;
+}
+
+std::ostream &operator<<(std::ostream &out, const Implication &i) {
+  return out << i.m_Condition << "->" << i.m_Conclusion;
 }

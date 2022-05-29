@@ -23,7 +23,7 @@ HEADERS += \
     clause.h \
     implication.h \
     info.h \
-    knowlegebase.h \
+    knowledgebase.h \
     literal.h \
     mainwindow.h \
     predicate.h \
