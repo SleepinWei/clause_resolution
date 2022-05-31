@@ -9,7 +9,23 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow() { delete ui; }
 
-void MainWindow::on_actionAbout_the_Program_triggered() {}
+void MainWindow::on_actionAbout_the_Program_triggered() {
+  QMessageBox::about(
+      this, "About the Program",
+      "Resolution principle is the basic theory of general logic reasoning "
+      "algorithm, that is, agents can judge whether a conclusion is true or "
+      "not by a series of given clause sets and combining two clauses. This "
+      "principle can be used in computer efficiently, and it is a better "
+      "reasoning technology that can be realized in computer. It makes great "
+      "progress in automatic theorem proving.\n\nIn this program, the problem "
+      "of solving the case is first transformed into clauses and the known "
+      "facts, processes and objectives are determined. Then, the antecedents "
+      "and consequent of each implication (process) are separated and deduced "
+      "through forward links to obtain the results to be proved.\n\nYou can "
+      "enter the Knowledge Base and Query to be resolved in the program, and "
+      "then click Run to see the resolution process and results of the output. "
+      "Click Clear to clear the input and output.\n\nEnjoy!");
+}
 
 void MainWindow::on_actionAbout_Qt_triggered() {
   QMessageBox::aboutQt(this, "About Qt");

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1571</width>
-    <height>1018</height>
+    <width>1744</width>
+    <height>1160</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -256,7 +256,7 @@ L(C)&amp;H(C,A)&amp;~R(C,A)&amp;~K(A,A)&amp;~K(B,A)-&gt;K(C,A)</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1571</width>
+     <width>1744</width>
      <height>31</height>
     </rect>
    </property>

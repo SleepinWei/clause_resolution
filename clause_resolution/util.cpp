@@ -15,8 +15,9 @@ void printMap(std::map<std::string, std::string> &map) {
 std::ostream &operator<<(std::ostream &out, Predicate const &p) {
   out << p.m_sName << '(';
   for (int i = 0; i < p.m_vTerms.size(); i++) {
-    if (i != 0)
+    if (i != 0) {
       out << ',';
+    }
     out << p.m_vTerms[i];
   }
   out << ")";
